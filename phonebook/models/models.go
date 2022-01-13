@@ -23,6 +23,9 @@ func Setup() {
 	if err != nil {
 		log.Fatalf("models.Setup err: %v", err)
 	}
+	db.AutoMigrate(&User{})
+	db.AutoMigrate(&Contact{})
+	db.Create(&User{Username: "hp"})
 
 	sqlDB, _ := db.DB()
 	sqlDB.SetMaxIdleConns(10)
