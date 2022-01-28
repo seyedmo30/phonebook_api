@@ -32,10 +32,6 @@ func Test(c *gin.Context) {
 
 	gg := c.Request.URL.Query()
 
-	dd, ll := c.GetQuery("salam")
-	println(dd, ll)
-	println()
-	println(gg)
 	c.JSON(200, gin.H{
 		"Accepted": gg,
 		"Request":  c.Keys,
