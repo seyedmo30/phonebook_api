@@ -1,7 +1,5 @@
 package models
 
-import "fmt"
-
 // "gorm.io/gorm"
 
 type Contact struct {
@@ -12,20 +10,18 @@ type Contact struct {
 	// Assign User   `gorm:"constraint:OnDelete:SET NULL;"`
 }
 
-func AddContact(name *string, number *string) error {
-	contact := Contact{
-		Name:   *name,
-		Number: *number,
-	}
-	fmt.Println("mod \n", contact.Name)
-	fmt.Println("mod \n", contact.Number)
+func (struct_obj *Contact) AddContact() error {
 
-	if err := db.Create(contact).Error; err != nil {
+	if err := db.Create(&struct_obj).Error; err != nil {
 		return err
 	}
 
 	return nil
 }
+
+// func GetListContact(pageNum int, pageSize int, maps interface{}) ([]*Contact, error) {
+
+// }
 
 func (con *Contact) AddContact2() error {
 	if err := db.Create(&con).Error; err != nil {
