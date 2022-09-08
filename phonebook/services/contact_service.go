@@ -3,6 +3,7 @@ package services
 import (
 	// "time"
 
+	"github.com/seyedmo30/phonebook_api/phonebook/entity"
 	"github.com/seyedmo30/phonebook_api/phonebook/models"
 )
 
@@ -21,4 +22,11 @@ func Add(name *string, number *string) error {
 	obj := models.Contact{Name: contact.Name, Number: contact.Number}
 	err := obj.AddContact()
 	return err
+}
+
+func SearchContact(name *string) (*entity.Contact, error) {
+
+	contact, err := models.SearchContact(name)
+
+	return contact, err
 }

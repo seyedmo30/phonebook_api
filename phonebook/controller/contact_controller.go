@@ -13,6 +13,36 @@ type AddContactForm struct {
 	Number string `form:"number"  json:"number"  binding:"required"`
 }
 
+func SearchContact(c *gin.Context) {
+	//TODO bind
+	println("salammmmmmmm")
+
+	name, _ := c.GetQuery("name")
+	println(name)
+	errs := validate.Var(name, "required,lte=30")
+
+	if errs != nil {
+		fmt.Println(errs)
+		c.JSON(400, gin.H{
+			"message": errs,
+		})
+	}
+
+	contact, err := services.SearchContact(&name)
+
+	if err != nil {
+		fmt.Println(errs)
+		c.JSON(500, gin.H{
+			"message": errs,
+		})
+	}
+
+	c.JSON(200, gin.H{
+		"message": contact,
+	})
+
+}
+
 func Add_contact(c *gin.Context) {
 	var json AddContactForm
 

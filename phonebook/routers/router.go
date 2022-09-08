@@ -13,11 +13,14 @@ func InitRouter() *gin.Engine {
 
 	api := r.Group("/api/")
 	{
+
 		// api.GET("/users", controller.Get_users)
+		api.GET("/", controller.MainPage)
 		api.GET("/test", controller.Test)
 		// api.GET("/users/total", controller.Get_total_user)
 		api.POST("/contact/add", controller.Add_contact)
 		api.GET("/users/:username", controller.Get_user_by_username)
+		api.GET("/contact/search", controller.SearchContact)
 
 	}
 

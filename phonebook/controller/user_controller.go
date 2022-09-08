@@ -2,9 +2,27 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"github.com/seyedmo30/phonebook_api/phonebook/models"
 	"github.com/seyedmo30/phonebook_api/phonebook/services"
 )
+
+var validate *validator.Validate
+
+func MainPage(c *gin.Context) {
+	//TODO bind
+	//TODO validation
+
+	user_service := services.User{
+
+		Username: "aa",
+	}
+	user, _ := user_service.Exist_by_username()
+
+	c.JSON(200, gin.H{
+		"message": user,
+	})
+}
 
 func Get_users(c *gin.Context) {
 
