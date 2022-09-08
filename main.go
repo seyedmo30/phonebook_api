@@ -12,7 +12,7 @@ import (
 
 func init() {
 	setting.Setup()
-	models.Setup()
+	models.Setup_v2()
 
 }
 func main() {

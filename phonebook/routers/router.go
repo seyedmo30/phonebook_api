@@ -17,6 +17,8 @@ func InitRouter() *gin.Engine {
 		api.GET("/test", controller.Test)
 		// api.GET("/users/total", controller.Get_total_user)
 		api.POST("/contact/add", controller.Add_contact)
+		api.GET("/users/:username", controller.Get_user_by_username)
+
 	}
 
 	return r
