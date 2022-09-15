@@ -17,13 +17,13 @@ type Contact struct {
 }
 
 func SearchContact(name *string) (*entity.Contact, error) {
-	var contact *entity.Contact
-	err := conn.QueryRow(context.Background(), "select name,number from contact where name like '%$1%' ", &name).Scan(&contact.Name, &contact.Number)
+	var contact entity.Contact
+	err := conn.QueryRow(context.Background(), "select name,number from contact where name like $1 ", "%"+*name+"%").Scan(&contact.Name, &contact.Number)
 
 	if err != nil {
-		return contact, err
+		return &contact, err
 	}
-	return contact, nil
+	return &contact, nil
 }
 
 func (struct_obj *Contact) AddContact() error {
