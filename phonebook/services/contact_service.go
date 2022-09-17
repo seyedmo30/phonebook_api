@@ -14,19 +14,28 @@ type Contact struct {
 	Image  string
 }
 
-func Add(name *string, number *string) error {
-
-	contact := new(Contact)
-	contact.Name = *name
-	contact.Number = *number
-	obj := models.Contact{Name: contact.Name, Number: contact.Number}
-	err := obj.AddContact()
+func AddContact(contact *entity.Contact) error {
+	err := models.AddContact(contact)
 	return err
 }
 
-func SearchContact(name *string) (*entity.Contact, error) {
+func SearchContact(name *string) (*[]entity.Contact, error) {
 
-	contact, err := models.SearchContact(name)
+	contacts, err := models.SearchContact(name)
+
+	return contacts, err
+}
+
+func GetContact(id *int) (*entity.Contact, error) {
+
+	contact, err := models.GetContact(id)
 
 	return contact, err
+}
+
+func ListContact(page *int) (*[]entity.Contact, error) {
+
+	contacts, err := models.ListContact(page)
+
+	return contacts, err
 }

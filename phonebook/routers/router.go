@@ -18,9 +18,11 @@ func InitRouter() *gin.Engine {
 		api.GET("/", controller.MainPage)
 		api.GET("/test", controller.Test)
 		// api.GET("/users/total", controller.Get_total_user)
-		api.POST("/contact/add", controller.Add_contact)
+		api.POST("/contact/add", controller.AddContact)
 		api.GET("/users/:username", controller.Get_user_by_username)
 		api.GET("/contact/search", controller.SearchContact)
+		api.GET("/contact/:id/", controller.GetContact)
+		api.GET("/contact", controller.ListContact)
 
 	}
 
